@@ -1,0 +1,48 @@
+body {
+    background-color: rgb(156, 172, 186);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    margin-left: 2%;
+    color: rgba(193, 11, 11, 0.805);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: underline;
+  }
+
+#top-section {
+    border: rgba(193, 11, 11, 0.805) solid;
+}   
+
+.review{
+    margin-top: 20px;
+    margin-bottom: -10px;
+    display: grid;
+    grid-template-columns: 60% 5% 30%;
+    grid-template-rows: 20px 280px;
+    grid-template-areas: 
+    "title . img" 
+    "body . img" ;   
+}
+.reviewList {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: dashed indigo;
+}
+
+.reviewBody {
+    grid-area: body;
+}
+.reviewImg {
+    grid-area: img;
+    width: 100%;
+    height: 70%;
+}     
+
+.reviewTitle {
+    font-weight: bold;
+    grid-area: title;
+    list-style-type: none;
+    text-decoration: underline;
+}
