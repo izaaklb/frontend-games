@@ -3,17 +3,30 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+#top-section {
+    background-color: rgb(165, 249, 192);
+    border: rgba(193, 11, 11, 0.805) solid;
+}   
+
+#top-section::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 h1 {
+    float: left;
     margin-left: 2%;
     color: rgba(193, 11, 11, 0.805);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-decoration: underline;
   }
-
-#top-section {
-    border: rgba(193, 11, 11, 0.805) solid;
-}   
-
+  .linkList {
+    float:right;
+    list-style: none;
+    margin-right: 50px;
+  }
+/* main body */
 .review{
     margin-top: 20px;
     margin-bottom: -10px;
@@ -41,8 +54,8 @@ h1 {
 }     
 
 .reviewTitle {
-    font-weight: bold;
     grid-area: title;
+    font-weight: bold;
     list-style-type: none;
     text-decoration: underline;
 }
