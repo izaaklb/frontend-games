@@ -1,7 +1,7 @@
+import { getReviews } from "../routes/api"
 import { useState, useEffect } from 'react'
-import { getReviews } from '../routes/api';
 
-export default function Home() {
+export default function Reviews() {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -19,16 +19,12 @@ export default function Home() {
             <p className='reviewBody'>{review.review_body}</p>
             </div>
     })
-
-    if(!isLoading){
-    return (
-        <ul className='reviewList'>{reviewsList}</ul>
-    )
-    }
+    if(isLoading) return (<h2>Loading...</h2>)
     else {
-          return (
-            <h2>Loading...</h2>
-        )
+    return (<div>
+        <h2>Reviews:</h2>
+        <ul>{reviewsList}</ul>
+    </div>)
     }
-    
+
 }

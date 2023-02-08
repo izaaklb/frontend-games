@@ -1,9 +1,16 @@
-import axios from 'axios'
+import axios from "axios";
 
-const gamesApi = axios.create({baseURL:"https://nc-games-v3ty.onrender.com/api"});
+const gamesApi = axios.create({
+  baseURL: "https://nc-games-v3ty.onrender.com/api",
+});
 
-export const getReviews=() => {
-    return gamesApi.get("/reviews").then(({data}) => {
-        return(data)
-    })
-}
+export const getReviews = (reviewId) => {
+  if (!reviewId) {
+    return gamesApi.get("/reviews").then(({ data }) => {
+      return data;
+    });
+  } else
+    return gamesApi.get(`reviews/${reviewId}`).then(({ data }) => {
+      return data;
+    });
+};
