@@ -1,6 +1,5 @@
 import { getReviews } from "../routes/api"
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
 
 export default function Reviews() {
     const [reviews, setReviews] = useState([]);
@@ -14,9 +13,11 @@ export default function Reviews() {
     }, [])   
 
     const reviewsList = reviews.map((review) => {
-            return (<nav>
-                <Link to={`/${review.review_id}`}>{review.title}</Link>
-            </nav>)
+        return <div className='review'>
+            <li className='reviewTitle'>{review.title}</li> 
+            <img src={review.review_img_url} className='reviewImg'></img>
+            <p className='reviewBody'>{review.review_body}</p>
+            </div>
     })
     if(isLoading) return (<h2>Loading...</h2>)
     else {

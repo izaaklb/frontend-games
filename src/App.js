@@ -1,20 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import Header from './components/Header'
-import Nav from './components/Nav'
-import Home from "./components/Home"
 import Reviews from "./components/Reviews"
+import Homepage from "./components/Homepage";
+import Review from "./components/Review"
 
 function App() {
   return (
-    <div className="App" id ="app">
-      <div id="top-section">
+    <div className="App"> 
       <Header/>
-      <Nav/>
-      </div>
       <Routes>
-        <Route path ="/" element = {<Home />}/>
-        <Route path ="/:reviewId" element={<Home/>}/>
-        <Route path ="/Reviews" element ={<Reviews/>}/>
+        <Route path ="/" element = {<Homepage/>}/>
+        <Route path ="/reviews" element={<Reviews/>}/>
+        <Route path ="/reviews/:reviewId" element ={<Review/>}/>
       </Routes>
     </div>
   );
