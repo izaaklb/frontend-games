@@ -14,3 +14,15 @@ export const getReviews = (reviewId) => {
       return data;
     });
 };
+
+export const getComments = (reviewId) => {
+  return gamesApi.get(`/reviews/${reviewId}/comments`).then(({data}) => {
+    return data;
+  })
+}
+
+export const getUsers  = () => {
+  return gamesApi.get('/users').then(({data})  => {
+  return data
+  })
+}

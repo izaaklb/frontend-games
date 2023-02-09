@@ -99,3 +99,53 @@ grid-area: body;
 grid-area: designer;
 }
 
+/* comment section */
+
+.commentsContainer {
+    width: 100%;;
+    color: black;
+    background-color: rgb(183, 200, 247);
+    border: solid navy;
+    padding-bottom: 1%;
+}
+
+.commentsTitle{
+    margin-left: 2.5rem;
+    font-size: x-large;
+}
+
+.Comments {
+    list-style: none;
+    display: grid;
+    grid-template-rows: 30px 50px;
+    grid-template-columns: 10vh 100vw;
+    grid-template-areas: 
+    "pic author"
+    "date body"
+}
+
+.commentPic {
+    grid-area: pic;
+    border-radius: 50%;
+    width: 8vh;
+    height: 8vh;
+}
+
+.commentAuthor {
+    grid-area: author;
+    font-size: larger;
+    display: inline-block;
+}
+
+.commentDate {
+    grid-area: date;
+    margin-left: 5px;
+    display:inline-block;
+    font-size: medium;
+    color: rgb(65, 65, 65);
+}
+
+.commentBody {
+    grid-area: body;
+    display: flex;
+}
