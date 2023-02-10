@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments, getUsers } from "../routes/api";
+import Votes from './Votes'
 
 export default function Comments({reviewId}) {
     const [comments, setComments] = useState([])
@@ -13,14 +14,14 @@ export default function Comments({reviewId}) {
         getUsers().then((users)=> {
             setUsers(users)
             setIsLoading(false)
-        })
+            })  
     }, [])
 
     const commentsList = comments.map((comment) => {
-        const dateFormatter = (comment) => {
+        function dateFormatter (comment) {
             return comment.created_at.slice(2, 10);
         }
-        const profilePic = (comment, users)  => {
+        function profilePic (comment, users) {
             const profilePic = users.find(object => object.username === comment.author)
             return profilePic.avatar_url;
         }
@@ -30,6 +31,7 @@ export default function Comments({reviewId}) {
         <section className="commentDate">{dateFormatter(comment)}</section>
         </h1> 
         <p className="commentBody">{comment.body}</p>
+        <Votes votes={comment.votes} commentId={comment.comment_id}/>
         </li>)
     })
 
