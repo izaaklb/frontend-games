@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments, getUsers } from "../routes/api";
+import CommentPoster from "./CommentPoster";
 
 export default function Comments({reviewId}) {
     const [comments, setComments] = useState([])
@@ -29,7 +30,7 @@ export default function Comments({reviewId}) {
         <h1 className="commentAuthor">{comment.author} 
         <section className="commentDate">{dateFormatter(comment)}</section>
         </h1> 
-        <p className="commentBody">{comment.body}</p>
+        <p className="commentBody">{comment.body}</p>      
         </li>)
     })
 
@@ -44,6 +45,7 @@ export default function Comments({reviewId}) {
     else return (
         <div className="commentsContainer"> 
             <h1 className="commentsTitle"> {comments.length} {commentPluraliser()} </h1>
+            <CommentPoster/>
         <ul>
         {commentsList}
         </ul>
