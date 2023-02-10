@@ -124,6 +124,7 @@ grid-area: designer;
     grid-template-areas: 
     "pic author"
     ". body"
+    ". votes"
 }
 
 .commentPic {
@@ -148,7 +149,6 @@ grid-area: designer;
 
 .commentBody {
     grid-area: body;
-    display: flex;
 }
 
 /* votes section */

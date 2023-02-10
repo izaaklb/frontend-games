@@ -8,15 +8,12 @@ export default function Comments({reviewId}) {
     const [loading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getComments(reviewId).then((comments) => {
-            setComments(comments)
+        Promise.all([getComments(reviewId), getUsers()]).then((resolvedArray) => {
+            setComments(resolvedArray[0]);
+            setUsers(resolvedArray[1])
+            setIsLoading(false);
         })
-        getUsers().then((users)=> {
-            setUsers(users)
-            setIsLoading(false)
-            })  
     }, [])
-
     const commentsList = comments.map((comment) => {
         function dateFormatter (comment) {
             return comment.created_at.slice(2, 10);
@@ -26,7 +23,7 @@ export default function Comments({reviewId}) {
             return profilePic.avatar_url;
         }
        return (<li key={comment.comment_id} className="Comments">
-        <img src={profilePic(comment, users)} className="commentPic"/>
+        <img src={profilePic(comment, users)} className="commentPic" alt="Profile picture"/>
         <h1 className="commentAuthor">{comment.author} 
         <section className="commentDate">{dateFormatter(comment)}</section>
         </h1> 
