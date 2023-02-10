@@ -26,3 +26,15 @@ export const getUsers  = () => {
   return data
   })
 }
+
+export const patchCommentVotes = (comment_id, voteInc) => {
+  return gamesApi.patch(`/comments/${comment_id}`, {inc_votes: voteInc}).then(({data}) =>{
+    console.log(data);
+  })
+}
+
+export const patchReviewVotes = (review_id, voteInc) => {
+  return gamesApi.patch(`/reviews/${review_id}`, {inc_votes: voteInc}).then(({data}) =>{
+    console.log(data);
+  })
+}

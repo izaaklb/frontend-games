@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments, getUsers } from "../routes/api";
+import Votes from './Votes'
 
 export default function Comments({reviewId}) {
     const [comments, setComments] = useState([])
@@ -7,29 +8,27 @@ export default function Comments({reviewId}) {
     const [loading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getComments(reviewId).then((comments) => {
-            setComments(comments)
-        })
-        getUsers().then((users)=> {
-            setUsers(users)
-            setIsLoading(false)
+        Promise.all([getComments(reviewId), getUsers()]).then((resolvedArray) => {
+            setComments(resolvedArray[0]);
+            setUsers(resolvedArray[1])
+            setIsLoading(false);
         })
     }, [])
-
     const commentsList = comments.map((comment) => {
-        const dateFormatter = (comment) => {
+        function dateFormatter (comment) {
             return comment.created_at.slice(2, 10);
         }
-        const profilePic = (comment, users)  => {
+        function profilePic (comment, users) {
             const profilePic = users.find(object => object.username === comment.author)
             return profilePic.avatar_url;
         }
        return (<li key={comment.comment_id} className="Comments">
-        <img src={profilePic(comment, users)} className="commentPic"/>
+        <img src={profilePic(comment, users)} className="commentPic" alt="Profile picture"/>
         <h1 className="commentAuthor">{comment.author} 
         <section className="commentDate">{dateFormatter(comment)}</section>
         </h1> 
         <p className="commentBody">{comment.body}</p>
+        <Votes votes={comment.votes} commentId={comment.comment_id}/>
         </li>)
     })
 
