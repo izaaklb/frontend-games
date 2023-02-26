@@ -29,6 +29,9 @@ export default function Votes ({votes, commentId}) {
             setDownVoteImg(downUnselected)
             patchCommentVotes(commentId, 1)
         }
+        if(downClicked){
+            patchCommentVotes(commentId, 1)
+        }
     }
     
     function handleDownVote() {
@@ -46,6 +49,9 @@ export default function Votes ({votes, commentId}) {
             setUpClicked(false)
             setDownVoteImg(downvote)
             setUpVoteImg(upUnselected)
+            patchCommentVotes(commentId, -1)
+        }
+        if(upClicked){
             patchCommentVotes(commentId, -1)
         }
     }

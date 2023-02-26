@@ -28,13 +28,17 @@ export const getUsers  = () => {
 }
 
 export const patchCommentVotes = (comment_id, voteInc) => {
-  return gamesApi.patch(`/comments/${comment_id}`, {inc_votes: voteInc}).then(({data}) =>{
-    console.log(data);
-  })
+  return gamesApi.patch(`/comments/${comment_id}`, {inc_votes: voteInc})
 }
 
 export const patchReviewVotes = (review_id, voteInc) => {
-  return gamesApi.patch(`/reviews/${review_id}`, {inc_votes: voteInc}).then(({data}) =>{
-    console.log(data);
+  return gamesApi.patch(`/reviews/${review_id}`, {inc_votes: voteInc})
+ 
+}
+
+export const postComments = (reviewId, username, body) => {
+  return gamesApi.post(`reviews/${reviewId}/comments`, {username: username, body: body})
+  .then(({data}) => {
+    return data;
   })
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments, getUsers } from "../routes/api";
+import CommentPoster from "./CommentPoster";
 import Votes from './Votes'
 
 export default function Comments({reviewId}) {
@@ -13,7 +14,8 @@ export default function Comments({reviewId}) {
             setUsers(resolvedArray[1])
             setIsLoading(false);
         })
-    }, [])
+    }, [reviewId])
+
     const commentsList = comments.map((comment) => {
         function dateFormatter (comment) {
             return comment.created_at.slice(2, 10);
@@ -23,28 +25,29 @@ export default function Comments({reviewId}) {
             return profilePic.avatar_url;
         }
        return (<li key={comment.comment_id} className="Comments">
-        <img src={profilePic(comment, users)} className="commentPic" alt="Profile picture"/>
+        <img src={profilePic(comment, users)} className="commentPic" alt="Profile"/>
         <h1 className="commentAuthor">{comment.author} 
         <section className="commentDate">{dateFormatter(comment)}</section>
         </h1> 
-        <p className="commentBody">{comment.body}</p>
+        <div className="commentBody">{comment.body} 
         <Votes votes={comment.votes} commentId={comment.comment_id}/>
-        </li>)
-    })
-
+        </div>  
+        </li>)})
+    
     function commentPluraliser() {
         if(comments.length === 1){
             return "Comment"
-        }
-        else return "Comments"
+        } 
+            else return "Comments"
     }
 
     if(loading) return <h1>Loading...</h1>
     else return (
         <div className="commentsContainer"> 
             <h1 className="commentsTitle"> {comments.length} {commentPluraliser()} </h1>
+            <CommentPoster comments={comments} setComments={setComments}/>
         <ul>
-        {commentsList}
+            {commentsList}
         </ul>
         </div>
     )

@@ -20,11 +20,9 @@ export default function Reviews() {
             </div>
     })
     if(isLoading) return (<h2>Loading...</h2>)
-    else {
-    return (<div>
+    
+    else return (<div>
         <h2>Reviews:</h2>
         <ul>{reviewsList}</ul>
     </div>)
-    }
-
 }

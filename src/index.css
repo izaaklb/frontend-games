@@ -72,6 +72,18 @@ body {
     color: lightgray;
 }
 
+/* login page */
+
+.loginPage {
+    text-align: center;
+}
+
+.loginAvatar {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+}
+
 /* individual review */
 
 .reviewTitle {
@@ -117,14 +129,12 @@ grid-area: designer;
 }
 
 .Comments {
-    list-style: none;
     display: grid;
-    grid-template-rows: 30px auto auto;
+    grid-template-rows: 5vh auto;
     grid-template-columns: 10vh auto;
     grid-template-areas: 
     "pic author"
     ". body"
-    ". votes"
 }
 
 .commentPic {
@@ -148,14 +158,33 @@ grid-area: designer;
 }
 
 .commentBody {
+    display: flex;
+    flex-direction: column;
     grid-area: body;
 }
 
-/* votes section */
-
 .voteContainer {
-   grid-area: votes;
+    margin-top: 0.25vh;
 }
+
+/* comment poster section */
+
+.commentPoster {
+    margin-left: 2.5vw;
+    border-bottom: solid gray;
+}
+
+.commentPostPic {
+    border-radius: 50%;
+    width: 8vh;
+    height: 8vh;
+}
+
+.unSignedInMessage {
+    margin-left: 4.5vw;
+}
+
+/* votes */
 
 .voteButton {
     cursor: pointer;

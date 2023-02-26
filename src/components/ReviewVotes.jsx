@@ -19,7 +19,7 @@ export default function ReviewVotes ({votes, reviewId}) {
             setDownClicked(false)
             setUpVoteImg(upUnselected)
             setDownVoteImg(downUnselected)
-            patchReviewVotes(reviewId, -1 )
+            patchReviewVotes(reviewId, -1)
         }
         if(!upClicked) {
             setVotes(votes + 1)
@@ -29,8 +29,10 @@ export default function ReviewVotes ({votes, reviewId}) {
             setDownVoteImg(downUnselected)
             patchReviewVotes(reviewId, 1)
         }
-    }
-    
+        if(downClicked){
+            patchReviewVotes(reviewId, 1)
+        }
+    }   
     function handleDownVote() {
         if(downClicked){
             setVotes(votes)
@@ -46,6 +48,9 @@ export default function ReviewVotes ({votes, reviewId}) {
             setUpClicked(false)
             setDownVoteImg(downvote)
             setUpVoteImg(upUnselected)
+            patchReviewVotes(reviewId, -1)
+        }
+        if(upClicked){
             patchReviewVotes(reviewId, -1)
         }
     }
