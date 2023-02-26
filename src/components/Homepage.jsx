@@ -14,14 +14,14 @@ export default function () {
     }, [])   
 
     const reviewsList = reviews.map((review) => {
-            return (<nav className="review">
+            return (<nav className="review" key={review.review_id}>
                 <Link className ="Container" to={`/reviews/${review.review_id}`}>
                 <img src={review.review_img_url} id="reviewImgs"/>
-                <h id="reviewTitles">{review.title}</h>
-                <p1 id="reviewAuthors">Review by {review.owner} 
-                <p3 id="reviewDates"> {review.created_at.slice(2,10)}</p3>
-                </p1>
-                <p2 id="reviewDesigners">{review.designer}</p2>
+                <h2 id="reviewTitles">{review.title}</h2>
+                <p id="reviewAuthors">Review by {review.owner} 
+                {review.created_at.slice(2,10)}
+                </p>
+                <p id="reviewDesigners">{review.designer}</p>
                 </Link>
             </nav>)
 })
@@ -29,7 +29,7 @@ export default function () {
 if(isLoading) return (<h2>Loading...</h2>)
 else {
 return (<div>
-    <h2 className="homeTitle">Game Reviews</h2>
+    <h1 className="homeTitle">Game Reviews</h1>
     <ul className="reviewList">{reviewsList}</ul>
 </div>)
 }

@@ -36,7 +36,7 @@ body {
 .Container{
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 15% 75% 10%;
     grid-template-areas: 
     'img title'
     'img designer'
@@ -53,6 +53,7 @@ body {
 }
 
 #reviewTitles { 
+    margin-top: 0;
     font-size: large;
     grid-area: title;
 }
@@ -71,6 +72,18 @@ body {
     color: lightgray;
 }
 
+/* login page */
+
+.loginPage {
+    text-align: center;
+}
+
+.loginAvatar {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+}
+
 /* individual review */
 
 .reviewTitle {
@@ -82,7 +95,8 @@ body {
     grid-template-columns: 40% 50%;
     grid-template-areas: 
     "img body"
-    "designer body";
+    "designer body"
+    ". votes";
 }
 
 .reviewImg {
@@ -115,13 +129,12 @@ grid-area: designer;
 }
 
 .Comments {
-    list-style: none;
     display: grid;
-    grid-template-rows: 30px 50px;
-    grid-template-columns: 10vh 100vw;
+    grid-template-rows: 5vh auto;
+    grid-template-columns: 10vh auto;
     grid-template-areas: 
     "pic author"
-    "date body"
+    ". body"
 }
 
 .commentPic {
@@ -138,7 +151,6 @@ grid-area: designer;
 }
 
 .commentDate {
-    grid-area: date;
     margin-left: 5px;
     display:inline-block;
     font-size: medium;
@@ -146,6 +158,56 @@ grid-area: designer;
 }
 
 .commentBody {
-    grid-area: body;
     display: flex;
+    flex-direction: column;
+    grid-area: body;
+}
+
+.voteContainer {
+    margin-top: 0.25vh;
+}
+
+/* comment poster section */
+
+.commentPoster {
+    margin-left: 2.5vw;
+    border-bottom: solid gray;
+}
+
+.commentPostPic {
+    border-radius: 50%;
+    width: 8vh;
+    height: 8vh;
+}
+
+.unSignedInMessage {
+    margin-left: 4.5vw;
+}
+
+/* votes */
+
+.voteButton {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(183, 200, 247);
+}
+
+.upvote {
+    width: 1vw;
+    height: 2vh;
+}
+
+.downvote {
+    width: 1vw;
+    height: 2vh;
+}
+
+.reviewVoteButton {
+    cursor: pointer;
+    border: none;
+    background-color:  rgb(43, 62, 78);
+}
+
+.reviewVoteContainer {
+    grid-area: last-line;
 }

@@ -1,5 +1,5 @@
 import Nav from './Nav'
-import logo from '../media/logo1.png'
+import logo from '../media/logo.png'
 
 export default function Header() {
     return (
