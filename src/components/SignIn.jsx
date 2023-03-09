@@ -2,11 +2,10 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../contexts/User";
 import { getUsers } from "../routes/api";
 
-
 export default function SignIn() {
     const [ users, setUsers ] = useState([])
     const [ isLoading, setIsLoading] = useState(true)
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     
     useEffect(() => {
         getUsers().then((users) => {
